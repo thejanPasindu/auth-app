@@ -1,5 +1,6 @@
 const express = require('express');
-const app = express()
+const app = express();
+const cors = require('cors');
 const mongoose = require('mongoose');
 
 const authRoute = require('./routes/auth');
@@ -11,6 +12,7 @@ mongoose.connect('mongodb://localhost:27017/authDB', { useUnifiedTopology: true,
 }
 );
 
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/user', authRoute);
